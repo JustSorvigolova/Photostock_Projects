@@ -1,19 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row">
+<div class="row ">
   {% for pic in pics_list %}
-
-  <div class="col-sm-4">
+  <div class="col-sm-4 pt-5">
     <div class="card">
        <img class="card-img-top" src="{{ pic.small_picture.url }}" alt="{{ pic.title }}">
        <div class="card-body">
-        <p class="card-text"><a href="{% url 'picture_detail' pic.pk %}">{{ pic.title }}</a></p>
+        <h3 class="card-text"><a href="{% url 'picture_detail' pic.pk %}">{{ pic.title }}</a></h3>
          <p>{{ today }}</p>
+       <p>Категория: {{ pic.category }}</p>
+
+      <a href="{{ pic.picture.url }}">скачать</a>
      </div>
     </div>
   </div>
-  {% endfor %}
-</div>
+  {% endfor %}</div>
+      {% if request.user.is_authenticated %}
+ <div class="container" style="padding-top: 40px;">
+<a href="{% url 'picture_new' %}"><button style="width: 200px; height: 70px;" class="btn btn-warning " >Add</button></a>
+  </div>
+{% endif %}
 
 {% endblock %}
+

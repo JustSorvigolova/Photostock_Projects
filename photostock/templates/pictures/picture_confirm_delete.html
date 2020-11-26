@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Удаление </h1>
+<h1>Удаление</h1>
 <form method="post">{% csrf_token %}
    Вы действительно хотите удалить "{{ object }}" ?
     <input type="submit" value="Submit" />

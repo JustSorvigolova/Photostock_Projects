@@ -2,8 +2,6 @@
 
 {% block content %}
 <div class="row">
-
-
   <div class="col-sm-4">
     <div class="card">
        <img class="card-img-top" src="{{ pic.small_picture.url }}" alt="{{ pic.title }}">
@@ -13,7 +11,10 @@
      </div>
     </div>
   </div>
-
 </div>
-
+   {% if request.user.is_authenticated %}
+     <div class="container">
+<a href="{% url 'picture_delete' pic.pk %}"><button class="btn btn-danger">Delete</button></a>
+<a href="{% url 'picture_update' pic.pk %}"><button class="btn btn-primary">Update</button></a></div>
+{% endif %}
 {% endblock %}
