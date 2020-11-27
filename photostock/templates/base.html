@@ -33,8 +33,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 {% for category in category_list %}
-
-                <a class="dropdown-item" href="{% url 'category_list' pk=category.pk %}">{{ category.name }}</a>
+                <a class="dropdown-item" href="{% url 'category_list' pk=category.pk %}">{{ category.name }}<button class="btn btn-primary"> {{ category.all_count }}</button></a>
                   <p>{{ category_list.object }}</p>
                 {% endfor %}
               </div></li>

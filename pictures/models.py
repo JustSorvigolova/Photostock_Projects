@@ -7,6 +7,9 @@ from photostock.users.models import User
 class Category(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
 
+    def all_count(self):
+        return Picture.objects.filter(category=self.id).count()
+
     def __str__(self):
         return self.name
 
